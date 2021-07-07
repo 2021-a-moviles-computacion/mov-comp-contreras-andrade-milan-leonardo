@@ -29,10 +29,10 @@ class CIntentExplicioParametros : AppCompatActivity() {
                 val intentDevolverParametros = Intent()
                 intentDevolverParametros.putExtra("nombreModificado","Vicente")
                 intentDevolverParametros.putExtra("edadModificada",33)
-                intentDevolverParametros.putExtra(
-                    "entrenadorModificado",
-                    BEntrenador("vicente", "Sarzosa")
-                )
+                //intentDevolverParametros.putExtra(
+                //    "entrenadorModificado",
+                    //BEntrenador("vicente", "Sarzosa")
+                //)
                 setResult(
                     RESULT_OK,
                     intentDevolverParametros
