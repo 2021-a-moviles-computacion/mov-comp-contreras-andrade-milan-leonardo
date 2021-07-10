@@ -1,11 +1,14 @@
 package com.example.examenb1
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+
 
 class crearUsuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,40 +18,73 @@ class crearUsuario : AppCompatActivity() {
 
         BaseDeDatos.Tablas= SQLiteHelper(this)
 
+        val regexCedulaUsuario = Regex("^[0-9]{10}")
+        val regexNombreUsuario = Regex("^[A-za-z]+")
+        val regexApellidoUsuario = Regex("^[A-za-z]+")
+        val regexTelefonoUsuario = Regex("^[0-9]+")
+        val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[012])\\/(19|20)\\d\\d")
+
         val ingresarCedulaUsuario = findViewById<EditText>(R.id.ti_cedula)
         val ingresarNombreUsuario = findViewById<EditText>(R.id.ti_nombre)
         val ingresarApellidoUsuario = findViewById<EditText>(R.id.ti_apellido)
         val ingresarTelefonoUsuario = findViewById<EditText>(R.id.ti_telefono)
         val ingresarFechaNacimientoUsuario = findViewById<EditText>(R.id.ti_fechaNacimiento)
 
+        ingresarCedulaUsuario.addTextChangedListener(crearusuarioTextWatcher)
+        ingresarNombreUsuario.addTextChangedListener(crearusuarioTextWatcher)
+        ingresarApellidoUsuario.addTextChangedListener(crearusuarioTextWatcher)
+        ingresarTelefonoUsuario.addTextChangedListener(crearusuarioTextWatcher)
+        ingresarFechaNacimientoUsuario.addTextChangedListener(crearusuarioTextWatcher)
+
         val botonCrearUsuario = findViewById<Button>(R.id.btn_crearUsuario)
+        botonCrearUsuario.isEnabled=false
         botonCrearUsuario
             .setOnClickListener {
-
-                if(BaseDeDatos.Tablas!=null){
-                    BaseDeDatos.Tablas!!.crearUsuarioFormulario(
-                        ingresarCedulaUsuario.text.toString(),
-                        ingresarNombreUsuario.text.toString(),
-                        ingresarApellidoUsuario.text.toString(),
-                        ingresarTelefonoUsuario.text.toString(),
-                        ingresarFechaNacimientoUsuario.text.toString()
-                    )
-
-                    Log.i("Crear-Usuario","Creando el usuario:" +
-                            "cedula: ${ingresarCedulaUsuario.text.toString()} \n" +
-                            "Nombre: ${ingresarNombreUsuario.text.toString()} \n" +
-                            "Apellido: ${ingresarApellidoUsuario.text.toString()} \n" +
-                            "Telefono: ${ingresarTelefonoUsuario.text.toString()} \n" +
-                            "Fecha Nacimeinto: ${ingresarFechaNacimientoUsuario.text.toString()} \n")
-                }
+                    if(BaseDeDatos.Tablas!=null){
+                        BaseDeDatos.Tablas!!.crearUsuarioFormulario(
+                            ingresarCedulaUsuario.text.toString(),
+                            ingresarNombreUsuario.text.toString(),
+                            ingresarApellidoUsuario.text.toString(),
+                            ingresarTelefonoUsuario.text.toString(),
+                            ingresarFechaNacimientoUsuario.text.toString()
+                        )
 
 
-                abrirActividad(MainActivity::class.java)
+                        Log.i("Crear-Usuario","Creando el usuario:" +
+                                "cedula: ${ingresarCedulaUsuario.text.toString()} \n" +
+                                "Nombre: ${ingresarNombreUsuario.text.toString()} \n" +
+                                "Apellido: ${ingresarApellidoUsuario.text.toString()} \n" +
+                                "Telefono: ${ingresarTelefonoUsuario.text.toString()} \n" +
+                                "Fecha Nacimeinto: ${ingresarFechaNacimientoUsuario.text.toString()} \n")
+                    }
+
+                    abrirActividad(MainActivity::class.java)
 
             }
 
+    }
 
 
+    private val crearusuarioTextWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            val ingresarCedulaUsuario = findViewById<EditText>(R.id.ti_cedula).text.toString().trim()
+            val ingresarNombreUsuario = findViewById<EditText>(R.id.ti_nombre).text.toString().trim()
+            val ingresarApellidoUsuario = findViewById<EditText>(R.id.ti_apellido).text.toString().trim()
+            val ingresarTelefonoUsuario = findViewById<EditText>(R.id.ti_telefono).text.toString().trim()
+            val ingresarFechaNacimientoUsuario = findViewById<EditText>(R.id.ti_fechaNacimiento).text.toString().trim()
+
+            val botonCrearUsuario = findViewById<Button>(R.id.btn_crearUsuario)
+            val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[012])\\/(19|20)\\d\\d")
+            botonCrearUsuario.isEnabled = (!ingresarCedulaUsuario.isEmpty() &&
+                    !ingresarNombreUsuario.isEmpty() &&
+                    !ingresarApellidoUsuario.isEmpty() &&
+                    !ingresarTelefonoUsuario.isEmpty() &&
+                    !ingresarFechaNacimientoUsuario.isEmpty()&&
+                    regexFechaNacimientoUsuario.matches(ingresarFechaNacimientoUsuario))
+        }
+
+        override fun afterTextChanged(s: Editable) {}
     }
 
     fun abrirActividad(clase: Class<*>){
