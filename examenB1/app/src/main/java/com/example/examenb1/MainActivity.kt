@@ -1,5 +1,6 @@
 package com.example.examenb1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import java.text.SimpleDateFormat
 
@@ -43,65 +45,24 @@ class MainActivity : AppCompatActivity() {
 
         registerForContextMenu(listViewUsuario)
 
-        //adaptador!!.notifyDataSetChanged()
 
-
-
-        //listViewUsuario.setOnItemClickListener { parent, view, position, id ->
-        //registerForContextMenu(listViewUsuario)
-        //listViewUsuario.showContextMenu();
-        //   listViewUsuario.showContextMenuForChild(view);
-        //}
-
-/*
-        listViewUsuario.setOnItemLongClickListener{
-                adapterView, view, posicion, id ->
-            Log.i("list-view","Dio click ${posicion}")
-
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Titulo")
-            // builder.setMessage("Mensaje")
-
-            val seleccionUsuario = booleanArrayOf(
-                true,
-                false,
-                false
-            )
-            //val opciones = resources.getStringArray(R.array.string_array_opciones_dialogo)
-            builder.setMultiChoiceItems(
-                null,
-                seleccionUsuario
-            ) { dialog, which, isChhecked ->
-                Log.i("list-view", "${which} ${isChhecked}")
+        val botonIrActividadcrearUsuarioUsuario = findViewById<Button>(R.id.btn_ir_crear_usuario)
+        botonIrActividadcrearUsuarioUsuario
+            .setOnClickListener {
+                abrirActividad(crearUsuario::class.java)
             }
 
-            builder.setPositiveButton(
-                "Si",
-            ) { dialog, which ->
-                Log.i("list-view", "Si")
-            }
-
-            builder.setNegativeButton(
-                "No",
-                null
-            )
-
-
-            val dialogo = builder.create()
-            dialogo.show()
-
-            return@setOnItemLongClickListener true
-        }
-
-        */
     }
 
 
-    fun actualizarListView(){
-        val arregloUsuarios = BaseDeDatos.Tablas!!.consultarUsuariosFormulario()
-        adapter?.notifyDataSetChanged();
-    }
 
+    fun abrirActividad(clase: Class<*>){
+        val intentExplicito = Intent( //Intent es una clase, solamente para que este bien contextualizado.
+            this,
+            clase
+        )
+        startActivity(intentExplicito) //Lo heredamos de la clase.
+    }
 
     override fun onCreateContextMenu(
         menu: ContextMenu?,

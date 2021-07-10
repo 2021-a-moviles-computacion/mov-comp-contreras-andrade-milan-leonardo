@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">examenB1</string>
     <string name="tituloMainActivity">USUARIOS</string>
-    <string name="botonCrear">CREAR</string>
+    <string name="tituloActivityCrearUsuario">CREAR USUARIO</string>
+    <string name="botonIrActividadCrearUsuario">CREAR</string>
+    <string name="botonCrearUsuario">CREAR</string>
     <string name="menu_item_1">EDITAR</string>
     <string name="menu_item_2">ELIMINAR</string>
+    <string name="input_cedula">Cédula</string>
+    <string name="input_nombre">Nombre</string>
+    <string name="input_apellido">Apellido</string>
+    <string name="input_telefono">Teléfono</string>
+    <string name="input_fechaNacimiwnto">Fecha Nacimiento: dd/MM/YYY</string>
 </resources>
