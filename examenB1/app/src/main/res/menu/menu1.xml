@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/mi_editar"
-        android:title="Editar" />
+        android:title="@string/menu_item_1" />
     <item
         android:id="@+id/mi_eliminar"
-        android:title="Eliminar" />
+        android:title="@string/menu_item_2" />
 </menu>
