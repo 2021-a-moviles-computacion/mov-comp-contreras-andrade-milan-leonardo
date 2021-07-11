@@ -111,6 +111,9 @@ class MainActivity : AppCompatActivity() {
                 return true }
             //Ver Casas
             R.id.mi_verCasas -> {
+
+                abrirActividadConParametros(casasDeUsuario::class.java,UsuarioSelect)
+
                 Log.i("list-view","Ver Casas ${UsuarioSelect}")
 
                 return true }

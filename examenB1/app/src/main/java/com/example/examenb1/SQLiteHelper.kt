@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import androidx.core.database.getIntOrNull
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,6 +38,38 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                     ("1234567894","NOMBRE4","APELLIDO4","0999999904","01/04/1990"),
                     ("1234567895","NOMBRE5","APELLIDO5","0999999905","01/05/1990");""".trimIndent()
         db?.execSQL(scriptQuemarDatosUsuario)
+
+        val scriptCrearTablaCasa=
+            """
+                CREATE TABLE CASA(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_usuario INTEGER,
+                numcasa VARCHAR(4),
+                direccion VARCHAR(20),
+                terrenoArea double,
+                construccionArea DOUBLE,
+                parqueaderos int,
+                avaluo Double,
+                bodega int,
+                foreign key(id_usuario) references USUARIO1(id)
+                );
+            """.trimIndent()
+        db?.execSQL(scriptCrearTablaCasa)
+
+
+        val scriptQuemarDatosCasa=
+            """
+                INSERT INTO CASA (id_usuario,numcasa,direccion,terrenoarea,construccionarea,parqueaderos,avaluo,bodega) VALUES
+                (1,"casa1.1","direccion1.1",10000,10000,1,500000,0),
+                (1,"casa1.2","direccion1.2",10000,10000,0,500000,1),
+                (2,"casa2","direccion2",10000,10000,0,500000,0), 
+                (3,"casa3","direccion3",10000,10000,0,500000,1), 
+                (4,"casa4","direccion4",10000,10000,1,500000,1), 
+                (5,"casa5","direccion5",10000,10000,1,500000,1);
+                
+            """.trimIndent()
+        db?.execSQL(scriptQuemarDatosCasa)
+
         Log.i("bdd", "Quemar usuario")
     }
 
@@ -265,7 +298,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                 val construccionArea = resultaConsultaLectura.getDouble(5)
                 val parqueaderos = resultaConsultaLectura.getInt(6)
                 val avaluo = resultaConsultaLectura.getDouble(7)
-                val bodega = resultaConsultaLectura.getInt(8)
+                val bodega = resultaConsultaLectura.getString(8)
 
 
                 if(id!=null){
@@ -307,6 +340,9 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                 val construccionArea = resultaConsultaLectura.getDouble(5)
                 val parqueaderos = resultaConsultaLectura.getInt(6)
                 val avaluo = resultaConsultaLectura.getDouble(7)
+
+                //Log.i("prueba","int2: ${resultaConsultaLectura.getInt(8).toString()}")
+
                 val bodega = resultaConsultaLectura.getInt(8).toBoolean()
 
                 if(id!=null){
@@ -396,6 +432,9 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
     private fun Int.toBoolean():Boolean{
         return this==1
     }
+
+
+
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }
 
