@@ -17,12 +17,13 @@ class crearUsuario : AppCompatActivity() {
 
 
         BaseDeDatos.Tablas= SQLiteHelper(this)
-
+/*
         val regexCedulaUsuario = Regex("^[0-9]{10}")
         val regexNombreUsuario = Regex("^[A-za-z]+")
         val regexApellidoUsuario = Regex("^[A-za-z]+")
         val regexTelefonoUsuario = Regex("^[0-9]+")
         val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[012])\\/(19|20)\\d\\d")
+*/
 
         val ingresarCedulaUsuario = findViewById<EditText>(R.id.ti_cedula)
         val ingresarNombreUsuario = findViewById<EditText>(R.id.ti_nombre)
@@ -51,11 +52,11 @@ class crearUsuario : AppCompatActivity() {
 
 
                         Log.i("Crear-Usuario","Creando el usuario:" +
-                                "cedula: ${ingresarCedulaUsuario.text.toString()} \n" +
-                                "Nombre: ${ingresarNombreUsuario.text.toString()} \n" +
-                                "Apellido: ${ingresarApellidoUsuario.text.toString()} \n" +
-                                "Telefono: ${ingresarTelefonoUsuario.text.toString()} \n" +
-                                "Fecha Nacimeinto: ${ingresarFechaNacimientoUsuario.text.toString()} \n")
+                                "cedula: ${ingresarCedulaUsuario.text} \n" +
+                                "Nombre: ${ingresarNombreUsuario.text} \n" +
+                                "Apellido: ${ingresarApellidoUsuario.text} \n" +
+                                "Telefono: ${ingresarTelefonoUsuario.text} \n" +
+                                "Fecha Nacimeinto: ${ingresarFechaNacimientoUsuario.text} \n")
                     }
 
                     abrirActividad(MainActivity::class.java)
@@ -75,19 +76,19 @@ class crearUsuario : AppCompatActivity() {
             val ingresarFechaNacimientoUsuario = findViewById<EditText>(R.id.ti_fechaNacimiento).text.toString().trim()
 
             val botonCrearUsuario = findViewById<Button>(R.id.btn_crearUsuario)
-            val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[012])\\/(19|20)\\d\\d")
-            botonCrearUsuario.isEnabled = (!ingresarCedulaUsuario.isEmpty() &&
-                    !ingresarNombreUsuario.isEmpty() &&
-                    !ingresarApellidoUsuario.isEmpty() &&
-                    !ingresarTelefonoUsuario.isEmpty() &&
-                    !ingresarFechaNacimientoUsuario.isEmpty()&&
+            val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])\\/(19|20)\\d\\d")
+            botonCrearUsuario.isEnabled = (ingresarCedulaUsuario.isNotEmpty() &&
+                    ingresarNombreUsuario.isNotEmpty() &&
+                    ingresarApellidoUsuario.isNotEmpty() &&
+                    ingresarTelefonoUsuario.isNotEmpty() &&
+                    ingresarFechaNacimientoUsuario.isNotEmpty() &&
                     regexFechaNacimientoUsuario.matches(ingresarFechaNacimientoUsuario))
         }
 
         override fun afterTextChanged(s: Editable) {}
     }
 
-    fun abrirActividad(clase: Class<*>){
+    private fun abrirActividad(clase: Class<*>){
         val intentExplicito = Intent( //Intent es una clase, solamente para que este bien contextualizado.
             this,
             clase
