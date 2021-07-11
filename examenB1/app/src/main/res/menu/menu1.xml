@@ -8,4 +8,7 @@
     <item
         android:id="@+id/mi_eliminar"
         android:title="@string/menu_item_2" />
+    <item
+        android:id="@+id/mi_verCasas"
+        android:title="@string/menu_item_3" />
 </menu>

@@ -109,6 +109,11 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 return true }
+            //Ver Casas
+            R.id.mi_verCasas -> {
+                Log.i("list-view","Ver Casas ${UsuarioSelect}")
+
+                return true }
 
             else -> super.onContextItemSelected(item)
         }
