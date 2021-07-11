@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 class MainActivity : AppCompatActivity() {
     var posicionItemSelecionado = 0
     var adapter: ArrayAdapter<Usuario>? = null
+    val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +93,8 @@ class MainActivity : AppCompatActivity() {
             R.id.mi_editar -> {
                 Log.i("list-view","Editar ${UsuarioSelect}")
 
+                abrirActividadConParametros(actualizarUsuario::class.java,UsuarioSelect)
+
                 return true
             }
 
@@ -109,6 +112,39 @@ class MainActivity : AppCompatActivity() {
 
             else -> super.onContextItemSelected(item)
         }
+    }
+
+
+
+    fun abrirActividadConParametros(
+        clase: Class<*>,
+        usuario: Usuario,
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase
+        )
+        intentExplicito.putExtra("nombre","Adrian")
+        //intentExplicito.putExtra("apellido","Eguez")
+        //intentExplicito.putExtra("edad","32")
+        //intentExplicito.putExtra(clase)
+        //    "entrenador",
+        //BEntrenador("Adrian","Eguez")
+        //)
+        //intentExplicito.putExtra("usuario",Usuario(0,"","","","",SimpleDateFormat("dd/MM/yyyy").parse("01/01/1998")))
+        intentExplicito.putExtra("usuario",usuario)
+        startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//            when(it.resultCode){
+//                Activity.RESULT_OK-> {
+//                    //Ejecutar codigo OK
+//                    it.data?.getStringExtra("nombreModofocado")
+//                    it.data?.getIntExtra("edadModificada",0)
+//                    it.data?.getParcelableExtra<BEntrenador>("entrenadorModificado")
+//                }
+//            }
+//        }
+        //startActivity(intentExplicito)
     }
 
 

@@ -202,7 +202,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
             arrayOf(id.toString()))
         conexionEscritura.close()
 
-        if(resultadoEliminacion.toInt()==1){
+        if(resultadoEliminacion.toInt()!=-1){
             Log.i("bdd",
                 "Se ha ELIMINADO el Usuario con id: ${id}")
             return true
@@ -223,6 +223,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         valorAActualizar.put("telefono", telefono)
         valorAActualizar.put("fechaNacimiento", formato.format(fechaNacimiento))
 
+
         val resultadoActualizacion = conexionEscritura.update(
             "USUARIO",
             valorAActualizar,
@@ -231,7 +232,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         )
         conexionEscritura.close()
 
-        if(resultadoActualizacion.toInt()==1){
+        if(resultadoActualizacion.toInt()!=-1){
             Log.i("bdd",
                 "Se ha ACTUALIZADO el Usuario con id: ${idActualizar}")
             return true

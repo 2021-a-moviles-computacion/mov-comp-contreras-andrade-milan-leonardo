@@ -2,8 +2,10 @@
     <string name="app_name">examenB1</string>
     <string name="tituloMainActivity">USUARIOS</string>
     <string name="tituloActivityCrearUsuario">CREAR USUARIO</string>
+    <string name="tituloActivityActualizarUsuario">ACTUALIZAR USUARIO</string>
     <string name="botonIrActividadCrearUsuario">CREAR</string>
     <string name="botonCrearUsuario">CREAR</string>
+    <string name="botonActualizarUsuario">ACTUALIZAR</string>
     <string name="menu_item_1">EDITAR</string>
     <string name="menu_item_2">ELIMINAR</string>
     <string name="input_cedula">Cédula</string>
