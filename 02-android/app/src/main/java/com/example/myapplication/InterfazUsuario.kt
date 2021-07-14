@@ -57,7 +57,8 @@ class InterfazUsuario : AppCompatActivity() {
                     val resultadoConsulta = EBaseDeDatos.TablaUsuario!!.consultarUsuarioPorId(idAConsultar.text.toString().toInt())
                     nombreConsultado.setText(resultadoConsulta.nombre)
                     descripcionConsultada.setText(resultadoConsulta.descripcion)
-                    Log.i("Interfaz-usuario", "Usuario encontrado: id: ${idAConsultar.text.toString()} ${resultadoConsulta.nombre.toString()}  ${resultadoConsulta.descripcion.toString()}")
+                    Log.i("Interfaz-usuario", "Usuario encontrado: id: " +
+                            "${idAConsultar.text.toString()} ${resultadoConsulta.nombre.toString()}  ${resultadoConsulta.descripcion.toString()}")
                 }
 
             }
@@ -67,8 +68,10 @@ class InterfazUsuario : AppCompatActivity() {
         botonActualizarUsuario
             .setOnClickListener {
                 if(EBaseDeDatos.TablaUsuario!=null){
-                        EBaseDeDatos.TablaUsuario!!.actualizarUsuarioFormulario(nombreConsultado.text.toString(),descripcionConsultada.text.toString(),idAConsultar.text.toString().toInt())
-                        Log.i("Interfaz-usuario", "Actualizado Usuario  Id: ${idAConsultar.text.toString()}  Nombre:${nombreConsultado.text.toString()}  Descripcion: ${descripcionConsultada.text.toString()}")
+                        EBaseDeDatos.TablaUsuario!!.actualizarUsuarioFormulario(
+                            nombreConsultado.text.toString(),descripcionConsultada.text.toString(),idAConsultar.text.toString().toInt())
+                        Log.i("Interfaz-usuario", "Actualizado Usuario  Id: " +
+                                "${idAConsultar.text.toString()}  Nombre:${nombreConsultado.text.toString()}  Descripcion: ${descripcionConsultada.text.toString()}")
                     nombreConsultado.setText("")
                     descripcionConsultada.setText("")
                     adaptador.notifyDataSetChanged()
