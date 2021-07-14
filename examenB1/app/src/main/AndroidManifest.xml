@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenB1">
-        <activity android:name=".casasDeUsuario"></activity>
+        <activity android:name=".editarCasa"></activity>
+        <activity android:name=".crearCasa" />
+        <activity
+            android:name=".casasDeUsuario"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".actualizarUsuario" />
         <activity android:name=".crearUsuario" />
         <activity android:name=".MainActivity">

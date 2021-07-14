@@ -61,9 +61,6 @@ class actualizarUsuario : AppCompatActivity() {
                     }
 
                 }
-
-
-
             }
     }
 
@@ -94,22 +91,6 @@ class actualizarUsuario : AppCompatActivity() {
                     ingresarTelefonoUsuario.isNotEmpty() &&
                     ingresarFechaNacimientoUsuario.isNotEmpty() &&
                    regexFechaNacimientoUsuario.matches(ingresarFechaNacimientoUsuario))
-
-/*
-            if(ingresarCedulaUsuario.isNotEmpty() &&
-                ingresarNombreUsuario.isNotEmpty() &&
-                ingresarApellidoUsuario.isNotEmpty() &&
-                ingresarTelefonoUsuario.isNotEmpty() &&
-                ingresarFechaNacimientoUsuario.isNotEmpty() &&
-                regexFechaNacimientoUsuario.matches(ingresarFechaNacimientoUsuario)){
-
-                botonactualizarUsuario.isEnabled= true
-            }else{
-                botonactualizarUsuario.isEnabled= false
-            }
-            */
-
-
         }
 
         override fun afterTextChanged(s: Editable) {}

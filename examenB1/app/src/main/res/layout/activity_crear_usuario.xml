@@ -40,7 +40,7 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/ti_nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText

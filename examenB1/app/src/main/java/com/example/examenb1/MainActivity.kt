@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             //Editar
             R.id.mi_editar -> {
                 Log.i("list-view","Editar ${UsuarioSelect}")
-
+                //Log.i("list-view2","Editar")
                 abrirActividadConParametros(actualizarUsuario::class.java,UsuarioSelect)
 
                 return true
@@ -130,29 +130,12 @@ class MainActivity : AppCompatActivity() {
     ){
         val intentExplicito = Intent(
             this,
-            clase
+            clase,
         )
-        intentExplicito.putExtra("nombre","Adrian")
-        //intentExplicito.putExtra("apellido","Eguez")
-        //intentExplicito.putExtra("edad","32")
-        //intentExplicito.putExtra(clase)
-        //    "entrenador",
-        //BEntrenador("Adrian","Eguez")
-        //)
-        //intentExplicito.putExtra("usuario",Usuario(0,"","","","",SimpleDateFormat("dd/MM/yyyy").parse("01/01/1998")))
+        //intentExplicito.putExtra("nombre","Adrian")
         intentExplicito.putExtra("usuario",usuario)
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-//            when(it.resultCode){
-//                Activity.RESULT_OK-> {
-//                    //Ejecutar codigo OK
-//                    it.data?.getStringExtra("nombreModofocado")
-//                    it.data?.getIntExtra("edadModificada",0)
-//                    it.data?.getParcelableExtra<BEntrenador>("entrenadorModificado")
-//                }
-//            }
-//        }
-        //startActivity(intentExplicito)
+
     }
 
 

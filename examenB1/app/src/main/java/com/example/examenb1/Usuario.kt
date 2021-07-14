@@ -25,7 +25,7 @@ class Usuario (
 
     ) {
     }
-
+/*
     override fun toString(): String {
         return  "${id} - " +
                 "${cedula} - " +
@@ -33,7 +33,17 @@ class Usuario (
                 "${apellido} - " +
                 "${telefono} - " +
                 "${SimpleDateFormat("dd/MM/yyyy").format(fechaNacimiento)}"
+    }
 
+ */
+
+
+    override fun toString(): String {
+        return  "CI: ${cedula} \n" +
+                "Nombre: ${nombre}  \n" +
+                "Apellido: ${apellido} \n" +
+                "Teléfono: ${telefono} \n"+
+                "Nacimiento: ${SimpleDateFormat("dd/MM/yyyy").format(fechaNacimiento)}"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

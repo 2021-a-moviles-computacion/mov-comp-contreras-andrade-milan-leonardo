@@ -27,7 +27,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
             fechaNacimiento date);
   
             """.trimIndent()
-        Log.i("bdd", "Creacion tabla usuario")
+
         db?.execSQL(scriptCrearTablaUsuario)
 
         val scriptQuemarDatosUsuario=
@@ -70,7 +70,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
             """.trimIndent()
         db?.execSQL(scriptQuemarDatosCasa)
 
-        Log.i("bdd", "Quemar usuario")
+        Log.i("bdd", "Creacion tablas")
     }
 
     //Usuario=======================================================================================
@@ -118,7 +118,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         construccionArea:Double,
         parqueaderos:Int,
         avaluo:Double,
-        bodega:Boolean,
+        bodega:Int,
     ):Boolean{
         val conexionEscritura= writableDatabase
         val valoresAGuardar= ContentValues()
@@ -132,7 +132,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         valoresAGuardar.put("bodega", bodega)
         val resultadoEscritura: Long= conexionEscritura.insert("CASA", null,valoresAGuardar)
         conexionEscritura.close()
-        if(resultadoEscritura.toInt()==1){
+        if(resultadoEscritura.toInt()!=-1){
             Log.i("bdd",
                 "Se Creo la Casa: id_usuario:${id_usuario} - " +
                         "numcasa:${numcasa} - " +
@@ -175,7 +175,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                     usuarioEencontrado.nombre = nombre
                     usuarioEencontrado.apellido = apellido
                     usuarioEencontrado.telefono = telefono
-                    usuarioEencontrado.fechaNacimiento = Date(formato.format(fechaNacimiento))
+                    SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimiento)
 
                     //arregloUsuario.add(usuarioEncontrado)
                 }
@@ -340,9 +340,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                 val construccionArea = resultaConsultaLectura.getDouble(5)
                 val parqueaderos = resultaConsultaLectura.getInt(6)
                 val avaluo = resultaConsultaLectura.getDouble(7)
-
-                //Log.i("prueba","int2: ${resultaConsultaLectura.getInt(8).toString()}")
-
                 val bodega = resultaConsultaLectura.getInt(8).toBoolean()
 
                 if(id!=null){
@@ -367,35 +364,54 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         return arregloCasa
     }
 
-    fun eliminarCasaFormulario(id: Int):Boolean{
+
+    fun eliminarCasaFormularioPorIdUsuario(id_usuario: Int):Boolean{
         val conexionEscritura = readableDatabase
-        val resultadoEliminacion = conexionEscritura.delete("CASA","id=?",
-            arrayOf(id.toString()))
+        val resultadoEliminacion = conexionEscritura.delete("CASA","ID_USUARIO=?",
+            arrayOf(id_usuario.toString()))
         conexionEscritura.close()
 
         if(resultadoEliminacion.toInt()==1){
             Log.i("bdd",
-                "Se ha ELIMINADO la Casa con id: ${id}")
+                "Se ha ELIMINADO la Casa del Usuario con  id: ${id_usuario}")
             return true
         }else{
-            Log.i("bdd","Error: No se ha logrado ELIMINAR la Casa con id: ${id}")
+            Log.i("bdd","Error: No se ha logrado ELIMINAR la  Casa del Usuario con: ${id_usuario}")
             return false
         }
         //return  if (resultadoEliminacion.toInt() == -1) false else true
     }
 
-    fun actualizarCasaFormulario(id_usuario:Int,
-                                 apellido:String,
+
+    fun eliminarCasaFormularioPorId(id: Int):Boolean{
+        val conexionEscritura = readableDatabase
+        val resultadoEliminacion = conexionEscritura.delete("CASA","ID=?",
+            arrayOf(id.toString()))
+        conexionEscritura.close()
+
+        if(resultadoEliminacion.toInt()==1){
+            Log.i("bdd",
+                "Se ha ELIMINADO la Casa con  id: ${id}")
+            return true
+        }else{
+            Log.i("bdd","Error: No se ha logrado ELIMINAR la  Casa con: ${id}")
+            return false
+        }
+
+    }
+
+    fun actualizarCasaFormulario(
+                                idActualizar:Int,
+                                id_usuario:Int,
                                  numcasa: String,
                                  direccion: String,
                                  terrenoArea:Double,
                                  construccionArea:Double,
                                  parqueaderos:Int,
                                  avaluo:Double,
-                                 bodega: Boolean,
-                                 idActualizar:Int
+                                 bodega: Boolean
     ): Boolean {
-        val formato = SimpleDateFormat("dd/MM/yyyy")
+
         val conexionEscritura = writableDatabase
         val valorAActualizar = ContentValues()
 
@@ -410,7 +426,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
 
 
         val resultadoActualizacion = conexionEscritura.update(
-            "USUARIO",
+            "CASA",
             valorAActualizar,
             "id=?",
             arrayOf(idActualizar.toString())
