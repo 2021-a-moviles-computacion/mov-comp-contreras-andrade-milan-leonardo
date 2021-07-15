@@ -39,6 +39,24 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        val botonIrInterfazUsuario = findViewById<Button>(R.id.btn_ir_interfazUsuario)
+
+        botonIrInterfazUsuario
+            .setOnClickListener {
+                abrirActividad(InterfazUsuario::class.java)
+            }
+
+
+        val botonIrRecyclerView = findViewById<Button>(R.id.btn_ir_recycler_view)
+
+
+        botonIrRecyclerView
+            .setOnClickListener {
+                abrirActividadConParametros(GRecycleView::class.java)
+            }
+
+
+
     }
 
 
@@ -52,10 +70,10 @@ class MainActivity : AppCompatActivity() {
         intentExplicito.putExtra("nombre","Adrian")
         intentExplicito.putExtra("apellido","Eguez")
         intentExplicito.putExtra("edad","32")
-        intentExplicito.putExtra(
-            "entrenador",
-            BEntrenador("Adrian","Eguez")
-        )
+        //intentExplicito.putExtra(
+        //    "entrenador",
+            //BEntrenador("Adrian","Eguez")
+        //)
 
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
 //        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){

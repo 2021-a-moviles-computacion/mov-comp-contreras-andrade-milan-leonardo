@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".editarCasa">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/tituloActivityEditarCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_numCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="@string/input_numeroCasa"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_direccionCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_direccionCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:hint="@string/input_direccion"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_areaTerrenoCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_areaTerrenoCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:hint="@string/input_terreno"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_areaConstruccionCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_areaConstruccionCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:hint="@string/input_construccion"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_parqueaderosCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_parqueaderosCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:hint="@string/input_parqueadero"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_avaluoCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ti_editar_avaluoCasa"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="@string/input_avaluo"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/cb_editar_bodebaCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_editar_bodebaCasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_editarCasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_editarCasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="@string/botonActualizarUsuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
+        android:text="@string/input_bodega"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_editar_bodebaCasa"
+        app:layout_constraintEnd_toStartOf="@+id/cb_editar_bodebaCasa"
+        app:layout_constraintTop_toTopOf="@+id/cb_editar_bodebaCasa"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_numeroCasa"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_numCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_numCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_numCasa" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_direccion"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_direccionCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_direccionCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_direccionCasa" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_areaTerrenoCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_areaTerrenoCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_areaTerrenoCasa"
+        tools:text="@string/input_terreno" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_construccion"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_areaConstruccionCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_areaConstruccionCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_areaConstruccionCasa" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_parqueadero"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_parqueaderosCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_parqueaderosCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_parqueaderosCasa" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_avaluo"
+        app:layout_constraintBottom_toTopOf="@+id/ti_editar_avaluoCasa"
+        app:layout_constraintEnd_toEndOf="@+id/ti_editar_avaluoCasa"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_editar_avaluoCasa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
