@@ -115,7 +115,6 @@ class crearCasa : AppCompatActivity() {
             this,
             clase
         )
-        //intentExplicito.putExtra("nombre","Adrian")
         intentExplicito.putExtra("usuario",usuario)
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }

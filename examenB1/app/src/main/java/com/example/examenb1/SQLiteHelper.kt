@@ -81,7 +81,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         telefono:String,
         fechaNacimiento:String
     ):Boolean{
-        //val formato = SimpleDateFormat("dd/MM/yyyy")
         val conexionEscritura= writableDatabase
         val valoresAGuardar= ContentValues()
 
@@ -93,7 +92,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
 
         val resultadoEscritura: Long= conexionEscritura.insert("USUARIO", null,valoresAGuardar)
         conexionEscritura.close()
-        if(resultadoEscritura.toInt()!=-1){
+        return if(resultadoEscritura.toInt()!=-1){
 
             Log.i("bdd",
                 "Se Creo el usuario: cedula:${cedula} - " +
@@ -101,13 +100,13 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                         "apellido:${apellido} - " +
                         "telefono:${telefono} - " +
                         "fechaNacimiento:${fechaNacimiento} - ")
-            return true
+            true
         }else{
             Log.i("bdd","Error: No se ha logrado crear el Usuario")
-            return false
+            false
 
         }
-        // return resultadoEscritura.toInt() != -1
+
     }
 
     fun crearCasaFormulario(
@@ -132,7 +131,7 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         valoresAGuardar.put("bodega", bodega)
         val resultadoEscritura: Long= conexionEscritura.insert("CASA", null,valoresAGuardar)
         conexionEscritura.close()
-        if(resultadoEscritura.toInt()!=-1){
+        return if(resultadoEscritura.toInt()!=-1){
             Log.i("bdd",
                 "Se Creo la Casa: id_usuario:${id_usuario} - " +
                         "numcasa:${numcasa} - " +
@@ -142,26 +141,23 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                         "parqueaderos:${parqueaderos} - " +
                         "avaluo:${avaluo} - " +
                         "bodega:${bodega} - ")
-            return true
+            true
         }else{
             Log.i("bdd","Error: No se ha logrado crear la Casa")
-            return false
+            false
         }
-
-        //return resultadoEscritura.toInt() != -1
     }
 
     fun consultarUsuarioPorId(id:Int): Usuario{
-        val formato = SimpleDateFormat("dd/MM/yyyy")
-        val scriptConsultarUsuario = "SELECT * FROM USUARIO WHERE ID = ${id}"
+        val scriptConsultarUsuario = "SELECT * FROM USUARIO WHERE ID = $id"
         val baseDatosLectura = readableDatabase
         val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarUsuario, null)
         val existeUsuario = resultaConsultaLectura.moveToFirst()
-        val arregloUsuario = arrayListOf<Usuario>()
-        val usuarioEencontrado = Usuario(0,"","","","", Date("01/01/1990"))
+        //val arregloUsuario = arrayListOf<Usuario>()
+        val usuarioEencontrado = Usuario(0,"","","","", SimpleDateFormat("dd/MM/yyyy").parse("07/11/1998"))
         if(existeUsuario){
             do{
-                val id = resultaConsultaLectura.getInt(0) //columna con el indice 0 -> en nuestro caso es el identificador
+                //val id = resultaConsultaLectura.getInt(0) //columna con el indice 0 -> en nuestro caso es el identificador
                 val cedula = resultaConsultaLectura.getString(1)
                 val nombre = resultaConsultaLectura.getString(2)
                 val apellido = resultaConsultaLectura.getString(3)
@@ -191,7 +187,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
     }
 
     fun consultarUsuariosFormulario(): ArrayList<Usuario> {
-        val formato = SimpleDateFormat("dd/MM/yyyy")
         val scriptConsultarUsuario = "SELECT * FROM USUARIO"
         val baseDatosLectura = readableDatabase
         val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarUsuario, null)
@@ -235,15 +230,14 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
             arrayOf(id.toString()))
         conexionEscritura.close()
 
-        if(resultadoEliminacion.toInt()!=-1){
+        return if(resultadoEliminacion.toInt()!=-1){
             Log.i("bdd",
                 "Se ha ELIMINADO el Usuario con id: ${id}")
-            return true
+            true
         }else{
             Log.i("bdd","Error: No se ha logrado ELIMINAR el Usuario con id: ${id}")
-            return false
+            false
         }
-        //return  if (resultadoEliminacion.toInt() == -1) false else true
     }
 
     fun actualizarUsuarioFormulario(nombre:String, apellido:String, telefono: String, fechaNacimiento: Date, idActualizar:Int): Boolean {
@@ -265,17 +259,14 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         )
         conexionEscritura.close()
 
-        if(resultadoActualizacion.toInt()!=-1){
+        return if(resultadoActualizacion.toInt()!=-1){
             Log.i("bdd",
                 "Se ha ACTUALIZADO el Usuario con id: ${idActualizar}")
-            return true
+            true
         }else{
             Log.i("bdd","Error: No se ha logrado ACTUALIZADO el Usuario con id: ${idActualizar}")
-            return false
+            false
         }
-
-
-        //return if (resultadoActualizacion.toInt() == -1) false else true
     }
 
 
@@ -300,7 +291,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                 val avaluo = resultaConsultaLectura.getDouble(7)
                 val bodega = resultaConsultaLectura.getString(8)
 
-
                 if(id!=null){
                     casaEncontrada.id = id
                     casaEncontrada.id_usuario = id_usuario
@@ -311,7 +301,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
                     casaEncontrada.parqueaderos = parqueaderos
                     casaEncontrada.avaluo = avaluo
                     casaEncontrada.bodega = bodega.toBoolean()
-                    //arregloUsuario.add(usuarioEncontrado)
                 }
             }while(resultaConsultaLectura.moveToNext())
         }
@@ -323,13 +312,11 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
 
 
     fun consultarCasasPorIdUsuario(id_usuario:Int): ArrayList<Casa> {
-        //val formato = SimpleDateFormat("dd/MM/yyyy")
         val scriptConsultarCasa = "SELECT * FROM CASA WHERE ID_USUARIO = ${id_usuario}"
         val baseDatosLectura = readableDatabase
         val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarCasa, null)
         val existeCasa = resultaConsultaLectura.moveToFirst()
         val arregloCasa = arrayListOf<Casa>()
-        //val casaEncontrada = Casa(0,null,"","",0.0,0.0,0,0.0,false)
         if(existeCasa){
             do{
                 val id = resultaConsultaLectura.getInt(0) //columna con el indice 0 -> en nuestro caso es el identificador
@@ -364,7 +351,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         return arregloCasa
     }
 
-
     fun eliminarCasaFormularioPorIdUsuario(id_usuario: Int):Boolean{
         val conexionEscritura = readableDatabase
         val resultadoEliminacion = conexionEscritura.delete("CASA","ID_USUARIO=?",
@@ -382,20 +368,19 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         //return  if (resultadoEliminacion.toInt() == -1) false else true
     }
 
-
     fun eliminarCasaFormularioPorId(id: Int):Boolean{
         val conexionEscritura = readableDatabase
         val resultadoEliminacion = conexionEscritura.delete("CASA","ID=?",
             arrayOf(id.toString()))
         conexionEscritura.close()
 
-        if(resultadoEliminacion.toInt()==1){
+        return if(resultadoEliminacion.toInt()==1){
             Log.i("bdd",
                 "Se ha ELIMINADO la Casa con  id: ${id}")
-            return true
+            true
         }else{
             Log.i("bdd","Error: No se ha logrado ELIMINAR la  Casa con: ${id}")
-            return false
+            false
         }
 
     }
@@ -424,7 +409,6 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         valorAActualizar.put("avaluo", avaluo)
         valorAActualizar.put("bodega", bodega)
 
-
         val resultadoActualizacion = conexionEscritura.update(
             "CASA",
             valorAActualizar,
@@ -433,23 +417,21 @@ class SQLiteHelper (contexto: Context?): SQLiteOpenHelper(
         )
         conexionEscritura.close()
 
-        if (resultadoActualizacion.toInt() == 1) {
+        return if (resultadoActualizacion.toInt() == 1) {
             Log.i(
                 "bdd",
                 "Se ha ACTUALIZADO la Casa con id: ${idActualizar}"
             )
-            return true
+            true
         } else {
             Log.i("bdd", "Error: No se ha logrado ACTUALIZADO la Casa con id: ${idActualizar}")
-            return false
+            false
         }
     }
 
     private fun Int.toBoolean():Boolean{
         return this==1
     }
-
-
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }

@@ -30,10 +30,6 @@ class editarCasa : AppCompatActivity() {
         val ingresarBobeda = findViewById<CheckBox>(R.id.cb_editar_bodebaCasa)
 
 
-
-
-
-
         ingresarNumCasa.setText(casa!!.numcasa)
         ingresarDireccionCasa.setText(casa!!.direccion)
         ingresarAreaTerreno.setText(casa!!.terrenoArea.toString())
@@ -97,16 +93,11 @@ class editarCasa : AppCompatActivity() {
     }
 
 
-
-
-
-
     private val crearusuarioTextWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
         }
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
 
             val ingresarNumCasa = findViewById<EditText>(R.id.ti_editar_numCasa).text.toString().trim()
             val ingresarDireccionCasa = findViewById<EditText>(R.id.ti_editar_direccionCasa).text.toString().trim()
@@ -114,8 +105,6 @@ class editarCasa : AppCompatActivity() {
             val ingresarAreaConstruccion = findViewById<EditText>(R.id.ti_editar_areaConstruccionCasa).text.toString().trim()
             val ingresarParqueaderos = findViewById<EditText>(R.id.ti_editar_parqueaderosCasa).text.toString().trim()
             val ingresarAvaluo = findViewById<EditText>(R.id.ti_editar_avaluoCasa).text.toString().trim()
-            //val ingresarBobeda = findViewById<CheckBox>(R.id.cb_bodega)
-
 
             val botonCrearCasa = findViewById<Button>(R.id.btn_editarCasa)
             botonCrearCasa.isEnabled = (
@@ -125,8 +114,6 @@ class editarCasa : AppCompatActivity() {
                             ingresarAreaConstruccion.isNotEmpty() &&
                             ingresarParqueaderos.isNotEmpty() &&
                             ingresarAvaluo.isNotEmpty())
-
-
         }
 
         override fun afterTextChanged(s: Editable) {}
@@ -142,12 +129,9 @@ class editarCasa : AppCompatActivity() {
             this,
             clase
         )
-        //intentExplicito.putExtra("nombre","Adrian")
         intentExplicito.putExtra("usuario",usuario)
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }
-
-
 }
 
 

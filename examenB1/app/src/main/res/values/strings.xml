@@ -3,7 +3,7 @@
     <string name="tituloMainActivity">USUARIOS</string>
     <string name="tituloActivityCrearUsuario">CREAR USUARIO</string>
     <string name="tituloActivityActualizarUsuario">EDITAR USUARIO</string>
-    <string name="tituloActivityCasasDeUsuario">CASAS DE USUARIO</string>
+    <string name="tituloActivityCasasDeUsuario">CASAS DEL USUARIO:</string>
     <string name="tituloActivityCrearCasa">CREAR CASA</string>
     <string name="tituloActivityEditarCasa">EDITAR CASA</string>
 

@@ -27,25 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         val formato = SimpleDateFormat("dd/MM/yyyy")
 
-        //  BaseDeDatos.Tablas!!.crearUsuarioFormulario("1719051984","nombremc4","apellidomc4","099999949",
-        //     "04/02/1998")
-
-        // BaseDeDatos.Tablas!!.crearUsuarioFormulario("1719051984","nombremc5","apellidomc5","099999949",
-        //     "04/02/1998")
-        //Log.i("actual", "${arregloUsuarios} \n")
-        //listView = findViewById<View>(R.id.lvContextMenu) as ListView
-        // = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, name)
-
-
-        //val arregloUsuarios = BaseDeDatos.Tablas!!.consultarUsuariosFormulario()
-        //val adaptador = ArrayAdapter(this, android.R.layout.simple_list_item_1, arregloUsuarios)
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, BaseDeDatos.Tablas!!.consultarUsuariosFormulario())
         val listViewUsuario = findViewById<ListView>(R.id.ltv_usuarios)
         listViewUsuario.adapter = adapter
 
-
         registerForContextMenu(listViewUsuario)
-
 
         val botonIrActividadcrearUsuarioUsuario = findViewById<Button>(R.id.btn_ir_crear_usuario)
         botonIrActividadcrearUsuarioUsuario

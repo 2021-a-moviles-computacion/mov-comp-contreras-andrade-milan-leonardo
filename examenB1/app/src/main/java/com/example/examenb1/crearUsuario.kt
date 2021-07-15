@@ -15,15 +15,7 @@ class crearUsuario : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_usuario)
 
-
         BaseDeDatos.Tablas= SQLiteHelper(this)
-/*
-        val regexCedulaUsuario = Regex("^[0-9]{10}")
-        val regexNombreUsuario = Regex("^[A-za-z]+")
-        val regexApellidoUsuario = Regex("^[A-za-z]+")
-        val regexTelefonoUsuario = Regex("^[0-9]+")
-        val regexFechaNacimientoUsuario = Regex("^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[012])\\/(19|20)\\d\\d")
-*/
 
         val ingresarCedulaUsuario = findViewById<EditText>(R.id.ti_cedula)
         val ingresarNombreUsuario = findViewById<EditText>(R.id.ti_nombre)

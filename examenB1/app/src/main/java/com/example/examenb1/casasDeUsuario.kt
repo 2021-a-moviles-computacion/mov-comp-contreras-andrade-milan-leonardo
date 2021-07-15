@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
+import android.widget.*
 
 class casasDeUsuario : AppCompatActivity() {
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
@@ -31,6 +28,9 @@ class casasDeUsuario : AppCompatActivity() {
 
             usuarioid = usuario!!.id
 
+        val valtextViewUsuario = findViewById<TextView>(R.id.tv_usuario_casas)
+
+        valtextViewUsuario.text = usuario.nombre +" "+usuario.apellido
 
         Log.i("prueba", "id usuario: $usuarioid")
 
