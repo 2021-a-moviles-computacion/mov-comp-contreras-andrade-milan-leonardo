@@ -55,6 +55,14 @@ class MainActivity : AppCompatActivity() {
                 abrirActividadConParametros(GRecycleView::class.java)
             }
 
+        val botonIrHttp = findViewById<Button>(R.id.btn_ir_http)
+
+
+        botonIrHttp
+            .setOnClickListener {
+                abrirActividadConParametros(HHttpActivity2::class.java)
+            }
+
 
 
     }
