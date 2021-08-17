@@ -46,6 +46,7 @@ class ActividadDetallePelicula : Fragment(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_actividad_detalle_pelicula, container, false)
 
@@ -107,15 +108,11 @@ class ActividadDetallePelicula : Fragment(
         categorias.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL, false)
 
-        Log.e("ayuda1",repartoData!![0].ImagePersona!!.toString())
-        Log.e("ayuda1",repartoData!![1].Nombre!!)
 
         var reparto = root.findViewById<RecyclerView>(R.id.recyclerView2)
         reparto.adapter = PersonaAdapter(repartoData!!)
         reparto.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL, false)
-
-
 
 
         return root

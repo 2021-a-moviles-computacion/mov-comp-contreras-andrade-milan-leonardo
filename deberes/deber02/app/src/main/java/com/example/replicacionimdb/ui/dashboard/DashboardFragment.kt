@@ -8,8 +8,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.replicacionimdb.R
 import com.example.replicacionimdb.databinding.FragmentDashboardBinding
+import com.example.replicacionimdb.ui.adapters.PeliculaAdapter
+import com.example.replicacionimdb.ui.adapters.PeliculaSearchItemAdapter
+import com.example.replicacionimdb.ui.clases.Pelicula
+import com.example.replicacionimdb.ui.clases.PeliculaSearch
 
 class DashboardFragment : Fragment() {
 
@@ -31,15 +39,81 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+
+        //Peliculas Search
+        val peliculasAdapter = PeliculaSearchItemAdapter(generarPeliculasSearch())
+
+        var PeliculasSearchRV = root.findViewById<RecyclerView>(R.id.rv_searchPeliculas)
+        PeliculasSearchRV.adapter = peliculasAdapter
+        PeliculasSearchRV.layoutManager = GridLayoutManager(context, 2)
+
+            //LinearLayoutManager(context,
+            //LinearLayoutManager.VERTICAL, false)
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun generarPeliculasSearch():ArrayList<PeliculaSearch>{
+        var lista = ArrayList<PeliculaSearch>()
+
+
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+        lista.add(
+            PeliculaSearch(
+                R.drawable.eh_the_best_25_august,
+                "texto 1"
+            )
+        )
+
+
+
+        return  lista
     }
 }

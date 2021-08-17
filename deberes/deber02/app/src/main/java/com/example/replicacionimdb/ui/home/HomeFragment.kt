@@ -21,6 +21,7 @@ import com.example.replicacionimdb.ui.clases.Persona
 import com.example.replicacionimdb.ui.clases.Slide
 
 class HomeFragment : Fragment() {
+
     private var lstSlides= ArrayList<Slide>()
 
     private lateinit var homeViewModel: HomeViewModel

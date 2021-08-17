@@ -6,6 +6,4 @@ import androidx.lifecycle.ViewModel
 import androidx.viewpager2.widget.ViewPager2
 
 class HomeViewModel : ViewModel() {
-
-
 }
