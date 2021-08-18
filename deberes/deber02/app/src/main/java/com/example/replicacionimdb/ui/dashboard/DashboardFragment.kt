@@ -66,51 +66,40 @@ class DashboardFragment : Fragment() {
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Avances de películas más populares"
             )
         )
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Avances de películas recientes"
             )
         )
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Horarios de películas"
             )
         )
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Taquilla (US)"
             )
         )
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Películas mejor calificadas"
             )
         )
         lista.add(
             PeliculaSearch(
                 R.drawable.eh_the_best_25_august,
-                "texto 1"
+                "Películas mas populares"
             )
         )
-        lista.add(
-            PeliculaSearch(
-                R.drawable.eh_the_best_25_august,
-                "texto 1"
-            )
-        )
-        lista.add(
-            PeliculaSearch(
-                R.drawable.eh_the_best_25_august,
-                "texto 1"
-            )
-        )
+
 
 
 
