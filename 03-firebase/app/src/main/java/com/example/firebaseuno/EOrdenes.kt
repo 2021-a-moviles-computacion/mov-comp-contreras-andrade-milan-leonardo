@@ -10,13 +10,20 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EOrdenes : AppCompatActivity() {
+
+    var arregloRestaurante1 = ArrayList<String>()
+    var arregloProductos1 = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eordenes)
 
-        val spinnerRestaurantes = findViewById<Spinner>(R.id.sp_restaurantes)
+
         var documentoRestaurante:(MutableList<DocumentSnapshot>)
+        var documentoProductos:(MutableList<DocumentSnapshot>)
+
         var arrayRestaurantes= ArrayList<String>()
+        var arrayProductos = ArrayList<String>()
         val db = Firebase.firestore
 
         var referencia = db.collection("restaurante")
@@ -26,46 +33,42 @@ class EOrdenes : AppCompatActivity() {
                 documentoRestaurante.forEach { iteracion ->
                     arrayRestaurantes.add(iteracion.get("nombre").toString())
                 }
+                    //llenar arreglo de la clase con restaurantes
+                arregloRestaurante1=arrayRestaurantes
 
-                val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayRestaurantes)
-                spinnerRestaurantes.adapter = adaptador
+                val referencia2 = db.collection("producto")
+                referencia2
+                    .get()
+                    .addOnSuccessListener {
+                    documentoProductos  = it.documents
+                    documentoProductos.forEach { iteracion ->
+                        arrayProductos.add(iteracion.get("nombre").toString())
+                    }
+                        //agregar al array producto
+                        arregloProductos1=arrayProductos
+
+                        val spinnerRestaurantes = findViewById<Spinner>(R.id.sp_restaurantes)
+                        val spinnerProductos = findViewById<Spinner>(R.id.sp_producto)
+
+                        val adaptadorRestaurantes = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arregloRestaurante1)
+                        spinnerRestaurantes.adapter = adaptadorRestaurantes
+
+                        val adaptadorProductos = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arregloProductos1)
+                        spinnerProductos.adapter = adaptadorProductos
+                }
+
+                Log.i("help", "obtuvo")
             }
-        
 
-        
+
+
         //=======================================
 
-        val spinnerProducto = findViewById<Spinner>(R.id.sp_producto)
-
-        var documentoProductos:(MutableList<DocumentSnapshot>)
-        var arrayProductos= ArrayList<String>()
-        val referencia2 = db.collection("producto").get().addOnSuccessListener {
-            documentoProductos  = it.documents
-            documentoProductos.forEach { iteracion ->
-                arrayProductos.add(iteracion.get("nombre").toString())
-            }
-            val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayProductos)
-            spinnerProducto.adapter = adaptador
-        }
 
     }
 
 
-    fun obtenerRestaurantes(): List<String> {
 
-        var documentoRestaurantes:(MutableList<DocumentSnapshot>)
-        var arrayRestaurantes= ArrayList<String>()
-        val db = Firebase.firestore
-        var referencia = db.collection("restaurante")
-            .get()
-            .addOnSuccessListener {
-                documentoRestaurantes  = it.documents
-                documentoRestaurantes.forEach {iteracion ->
-                    arrayRestaurantes.add(iteracion.get("nombre").toString())
-                }
-            }
-            return arrayRestaurantes
-    }
 
 
 }
