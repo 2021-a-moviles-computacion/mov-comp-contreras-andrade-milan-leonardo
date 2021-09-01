@@ -7,6 +7,6 @@ class FirestoreProductoDto(
 ) {
 
     override fun toString(): String {
-        return nombre
+        return "$nombre -> $ ${precio.toString()}"
     }
 }
