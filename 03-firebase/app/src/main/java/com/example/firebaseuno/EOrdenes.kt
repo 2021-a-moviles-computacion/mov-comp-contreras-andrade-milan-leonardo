@@ -160,16 +160,6 @@ class EOrdenes : AppCompatActivity() {
             }
             val orden = OrdenDto(productoSeleccionado.nombre,productoSeleccionado.precio!!,editTextCantidadProductosValorCorregido.toInt())
             añadirItemsAlListView(orden,adaptadorListaProductos)
-            /*
-            Log.i("help",
-                "orden:\n" +
-                        "${productoSeleccionado.nombre}\n" +
-                    "${productoSeleccionado.precio!!}\n" +
-                        "${editTextCantidadProductosValorCorregido}\n")
-            Log.i("help",
-                "orden 2: ${orden}")
-
-             */
         }
 
         val botonCompletarPedido = findViewById<Button>(R.id.btn_completar_pedido)
@@ -183,6 +173,8 @@ class EOrdenes : AppCompatActivity() {
     fun añadirItemsAlListView(objeto:OrdenDto, adaptador: ArrayAdapter<OrdenDto>){
         arregloOrden.add(objeto)
         adaptador.notifyDataSetChanged()
+        val textViewTotalAPagar = findViewById<TextView>(R.id.tv_total_a_pagar)
+        textViewTotalAPagar.text = (textViewTotalAPagar.text.toString().toDouble() + objeto.calcularTotal()).toString()
     }
 
 
