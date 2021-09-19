@@ -7,7 +7,7 @@ class OrdenDto (
     val nombreProducto: String,
     val precioUnitario: Double,
     val cantidad: Int,
-
+    val restaurante: FirestoreRestauranteDto
         ){
     override fun toString(): String {
         val format: NumberFormat = NumberFormat.getCurrencyInstance()

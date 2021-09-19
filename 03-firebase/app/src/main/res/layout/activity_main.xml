@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Restaurante"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/btn_producto"
         app:layout_constraintStart_toStartOf="@+id/btn_producto"
         app:layout_constraintTop_toBottomOf="@+id/btn_producto" />
@@ -74,4 +74,15 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_restaurante"
         app:layout_constraintStart_toStartOf="@+id/btn_restaurante"
         app:layout_constraintTop_toBottomOf="@+id/btn_restaurante" />
+
+    <Button
+        android:id="@+id/btn_ir_mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Mapa"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ordenes"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ordenes"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ordenes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

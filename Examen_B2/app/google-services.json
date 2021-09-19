@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101950219352",
+    "project_id": "mov-2021-a-cont-andr-examen",
+    "storage_bucket": "mov-2021-a-cont-andr-examen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101950219352:android:ba0c4eaee52c99e5ccd62d",
+        "android_client_info": {
+          "package_name": "com.example.examenb2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101950219352-p743cdoqm43uadvhq9hpchc5cojqqbbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFcLaIP6cnYk0j3mGSfQNmkcs6vedOj8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101950219352-p743cdoqm43uadvhq9hpchc5cojqqbbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

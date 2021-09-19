@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearUsuario">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tituloActivityCrearUsuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <EditText
+        android:id="@+id/ti_cedula"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="@string/input_cedula"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/ti_nombre"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/input_nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ti_cedula"
+        app:layout_constraintStart_toStartOf="@+id/ti_cedula"
+        app:layout_constraintTop_toBottomOf="@+id/ti_cedula" />
+
+    <EditText
+        android:id="@+id/ti_apellido"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/input_apellido"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ti_nombre"
+        app:layout_constraintStart_toStartOf="@+id/ti_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/ti_nombre" />
+
+    <EditText
+        android:id="@+id/ti_telefono"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/input_telefono"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/ti_apellido"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_apellido"
+        app:layout_constraintTop_toBottomOf="@+id/ti_apellido" />
+
+    <EditText
+        android:id="@+id/ti_fechaNacimiento"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/input_fechaNacimiwnto"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/ti_telefono"
+        app:layout_constraintStart_toStartOf="@+id/ti_telefono"
+        app:layout_constraintTop_toBottomOf="@+id/ti_telefono" />
+
+    <Button
+        android:id="@+id/btn_crearUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/botonCrear"
+        app:layout_constraintEnd_toEndOf="@+id/ti_fechaNacimiento"
+        app:layout_constraintStart_toStartOf="@+id/ti_fechaNacimiento"
+        app:layout_constraintTop_toBottomOf="@+id/ti_fechaNacimiento" />
+</androidx.constraintlayout.widget.ConstraintLayout>

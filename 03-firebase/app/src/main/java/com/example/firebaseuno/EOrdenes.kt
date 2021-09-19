@@ -46,9 +46,9 @@ class EOrdenes : AppCompatActivity() {
                 documentoRestaurante  = it.documents
                 documentoRestaurante.forEach { iteracion ->
                     var restauranteObjeto = iteracion.toObject(FirestoreRestauranteDto::class.java)
-                    restauranteObjeto!!.uid = iteracion.id
+                    //restauranteObjeto!!.uid = iteracion.id
 
-                    arrayRestaurantes.add(restauranteObjeto)
+                    arrayRestaurantes.add(restauranteObjeto!!)
                 }
                     //llenar arreglo de la clase con restaurantes
                 arregloRestaurante1=arrayRestaurantes
@@ -60,11 +60,11 @@ class EOrdenes : AppCompatActivity() {
                     documentoProductos  = it.documents
                     documentoProductos.forEach { iteracion ->
                         var productoObjeto = iteracion.toObject(FirestoreProductoDto::class.java)
-                        productoObjeto!!.uid=iteracion.id
-                        productoObjeto!!.nombre=iteracion.get("nombre").toString()
-                        productoObjeto!!.precio=iteracion.get("precio").toString().toDouble()
+                        //productoObjeto!!.uid=iteracion.id
+                        //productoObjeto!!.nombre=iteracion.get("nombre").toString()
+                        //productoObjeto!!.precio=iteracion.get("precio").toString().toDouble()
 
-                        arrayProductos.add(productoObjeto)
+                        arrayProductos.add(productoObjeto!!)
                     }
                         //agregar al array producto
                         arregloProductos1=arrayProductos
@@ -158,14 +158,15 @@ class EOrdenes : AppCompatActivity() {
             if(editTextCantidadProductosValorCorregido == ""){
                 editTextCantidadProductosValorCorregido = "1"
             }
-            val orden = OrdenDto(productoSeleccionado.nombre,productoSeleccionado.precio!!,editTextCantidadProductosValorCorregido.toInt())
+
+            val orden = OrdenDto(productoSeleccionado.nombre,productoSeleccionado.precio!!,editTextCantidadProductosValorCorregido.toInt(),restauranteSeleccionado)
             añadirItemsAlListView(orden,adaptadorListaProductos)
         }
 
         val botonCompletarPedido = findViewById<Button>(R.id.btn_completar_pedido)
         botonCompletarPedido
             .setOnClickListener {
-                Log.i("help", "Productos seleccionados: ${arregloOrden.toString()}")
+                Log.i("pedido", "Productos seleccionados: ${arregloOrden.toString()}")
             }
 
     }

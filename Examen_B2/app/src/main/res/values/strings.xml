@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">examenB2</string>
+    <string name="tituloMainActivity">USUARIOS</string>
+    <string name="tituloActivityCrearUsuario">CREAR USUARIO</string>
+    <string name="tituloActivityActualizarUsuario">EDITAR USUARIO</string>
+    <string name="tituloActivityCasasDeUsuario">CASAS DEL USUARIO:</string>
+    <string name="tituloActivityCrearCasa">CREAR CASA</string>
+    <string name="tituloActivityEditarCasa">EDITAR CASA</string>
+
+    <string name="botonIrActividadCrearUsuario">CREAR</string>
+    <string name="botonCrear">CREAR</string>
+    <string name="botonActualizarUsuario">EDITAR</string>
+    <string name="menu_item_1">EDITAR</string>
+    <string name="menu_item_2">ELIMINAR</string>
+    <string name="menu_item_3">VER CASAS</string>
+    <string name="menu_item_4">VER UBICACION</string>
+    <string name="input_cedula">Cédula</string>
+    <string name="input_nombre">Nombre</string>
+    <string name="input_apellido">Apellido</string>
+    <string name="input_telefono">Teléfono</string>
+    <string name="input_fechaNacimiwnto">Fecha Nacimiento: dd/MM/YYY</string>
+
+    <string name="input_numeroCasa">NUM. CASA</string>
+    <string name="input_direccion">DIRECCIÓN </string>
+    <string name="input_terreno">ÁREA TERRENO </string>
+    <string name="input_construccion">ÁREA CONSTRUCCIÓN </string>
+    <string name="input_parqueadero">NÚMERO DE PARQUEADEROS </string>
+    <string name="input_avaluo">AVALÚO </string>
+    <string name="input_bodega">TIENE BODEGA </string>
+</resources>
