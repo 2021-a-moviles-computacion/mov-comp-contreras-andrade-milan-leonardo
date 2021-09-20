@@ -81,6 +81,16 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
+        val botonIrImagenes= findViewById<Button>(R.id.btn_ir_imagenes)
+        botonIrImagenes
+            .setOnClickListener {
+                val intent = Intent(
+                    this,
+                    cideoYoutube2::class.java
+                )
+                startActivity(intent)
+            }
+
     }
 
 
